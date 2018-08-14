@@ -567,7 +567,7 @@ class JiraAlerter(Alerter):
         self.reset_jira_args()
 
         try:
-            self.client = JIRA(self.server, basic_auth=(self.user, self.password))
+            self.client = JIRA(self.server, basic_auth=(self.user, self.password), options={'verify': False})
             self.get_priorities()
             self.get_arbitrary_fields()
         except JIRAError as e:
